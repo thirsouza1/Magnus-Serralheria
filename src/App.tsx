@@ -31,7 +31,7 @@ const PHONE_NUMBER = "(35) 3531-3934";
 
 const images = {
   hero: "https://images.unsplash.com/photo-1558442086-3685e1920b70?auto=format&fit=crop&q=80&w=2000",
-  gate1: "https://images.unsplash.com/photo-1590487988256-9ed24133863e?auto=format&fit=crop&q=80&w=800",
+  gate1: "https://solobrasileiro.com/serralheria/portoes/wp-content/uploads/sites/3/2024/07/portao-articulado-modelo-basculante-serralheria-solo-brasileiro-768x566.jpg",
   details: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800",
   modern: "https://images.unsplash.com/photo-1613545325278-f24b0cae1224?auto=format&fit=crop&q=80&w=800",
   industry: "https://images.unsplash.com/photo-1517089596392-db213e924227?auto=format&fit=crop&q=80&w=800",
@@ -416,8 +416,14 @@ export default function App() {
             <p className="text-[10px] text-[#444] uppercase tracking-[0.3em]">
               Copyright 2026 Magnus Serralheria — Onde a Engenharia Encontra o Luxo
             </p>
-            <div className="flex items-center gap-2 opacity-30 group">
-              <span className="text-[8px] uppercase tracking-widest transition-opacity group-hover:opacity-100">Magnus Premium Metallurgy</span>
+            <div className="flex items-center gap-4 opacity-30 hover:opacity-100 transition-opacity group">
+              <span className="text-[8px] uppercase tracking-widest">Developed by</span>
+              <img 
+                src="https://drive.google.com/uc?export=view&id=1JClbtDWezILrtB4PbNOZp2RKn7rSsLiQ" 
+                alt="Developer Logo" 
+                className="h-8 w-auto grayscale brightness-200"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
         </div>
