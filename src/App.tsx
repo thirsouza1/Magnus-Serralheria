@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { 
   ShieldCheck, 
   Settings, 
@@ -65,53 +65,76 @@ export default function App() {
   return (
     <>
       {/* Initial Presentation / Preloader */}
-      {showIntro && (
-        <motion.div 
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden"
-        >
+      <AnimatePresence>
+        {showIntro && (
           <motion.div 
-            initial={{ scale: 1.2, x: -20 }}
-            animate={{ scale: 1, x: 0 }}
-            transition={{ duration: 4, ease: "easeOut" }}
-            className="absolute inset-0 z-0"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] }}
+            className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden"
           >
-            <div className="absolute inset-0 bg-black/60 z-10" />
-            <img 
-              src="https://images.tcdn.com.br/img/editor/up/762235/soldador.jpg" 
-              alt="Soldador Magnus" 
-              className="w-full h-full object-cover grayscale"
-            />
-          </motion.div>
-          
-          <div className="relative z-20 text-center">
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="flex flex-col items-center gap-6"
+              animate={{ 
+                scale: [1, 1.05, 1],
+                x: [-5, 5, -5],
+                y: [-2, 2, -2]
+              }}
+              transition={{ 
+                duration: 8, 
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="absolute inset-0 z-0"
             >
-              <div className="w-16 h-16 border-2 border-gold flex items-center justify-center transform rotate-45">
-                <span className="transform -rotate-45 font-bold text-gold text-2xl">M</span>
-              </div>
-              <h2 className="font-display text-2xl lg:text-3xl font-bold tracking-[0.3em] text-white uppercase italic">
-                Magnus <span className="text-gold">Artesanal</span>
-              </h2>
-              <div className="w-48 h-[1px] bg-white/20 relative overflow-hidden">
-                <motion.div 
-                  initial={{ x: "-100%" }}
-                  animate={{ x: "100%" }}
-                  transition={{ duration: 2.5, ease: "easeInOut", repeat: Infinity }}
-                  className="absolute inset-0 bg-gold"
-                />
-              </div>
+              <div className="absolute inset-0 bg-black/50 z-10" />
+              
+              {/* Welding Flash Effect */}
+              <motion.div
+                animate={{
+                  opacity: [0, 0.3, 0, 0.4, 0.1, 0.6, 0],
+                }}
+                transition={{
+                  duration: 0.5,
+                  repeat: Infinity,
+                  repeatDelay: 0.2
+                }}
+                className="absolute inset-0 bg-blue-400/10 z-15 mix-blend-screen"
+              />
+              
+              <img 
+                src="https://images.tcdn.com.br/img/editor/up/762235/soldador.jpg" 
+                alt="Soldador Magnus" 
+                className="w-full h-full object-cover grayscale"
+              />
             </motion.div>
-          </div>
-        </motion.div>
-      )}
+            
+            <div className="relative z-20 text-center">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 1 }}
+                className="flex flex-col items-center gap-6"
+              >
+                <div className="w-16 h-16 border-2 border-gold flex items-center justify-center transform rotate-45 shadow-[0_0_30px_rgba(197,160,89,0.3)]">
+                  <span className="transform -rotate-45 font-bold text-gold text-2xl">M</span>
+                </div>
+                <h2 className="font-display text-2xl lg:text-3xl font-bold tracking-[0.3em] text-white uppercase italic">
+                  Magnus <span className="text-gold">Artesanal</span>
+                </h2>
+                <div className="w-48 h-[1px] bg-white/10 relative overflow-hidden">
+                  <motion.div 
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "100%" }}
+                    transition={{ duration: 2.5, ease: "easeInOut", repeat: Infinity }}
+                    className="absolute inset-0 bg-gold"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className={`min-h-screen text-[#F5F5F5] selection:bg-gold/30 relative overflow-hidden ${showIntro ? 'h-screen overflow-hidden' : ''}`}>
       {/* Background Decorative Elements */}
