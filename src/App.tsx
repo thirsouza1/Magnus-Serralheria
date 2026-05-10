@@ -225,11 +225,11 @@ export default function App() {
       {/* Hero Section */}
       <section id="inicio" className="relative min-h-screen flex flex-col justify-start overflow-hidden z-10 pt-32 pb-20">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90 z-10" />
           <img 
-            src={images.hero} 
-            alt="Magnus Serralheria Hero" 
-            className="w-full h-full object-cover grayscale opacity-30"
+            src="https://solobrasileiro.com/serralheria/portoes/wp-content/uploads/sites/3/2024/06/Portao-basculante-tubo-metalon-galvanizado-fabricado-pela-serralheria-solo-brasileiro-1170x730.jpeg" 
+            alt="Magnus Serralheria Hero Background" 
+            className="w-full h-full object-cover grayscale opacity-40 transition-transform duration-[10s] hover:scale-110"
           />
         </div>
 
